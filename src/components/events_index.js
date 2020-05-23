@@ -12,6 +12,7 @@ import {
 } from 'material-ui/Table'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+
 import { readEvents } from '../actions'
 
 class EventsIndex extends Component {
@@ -20,10 +21,12 @@ class EventsIndex extends Component {
   }
 
   renderEvents() {
-    return _.map(this.props.events, (event) => (
-      <TableRow key={event.id}>
+    return _.map(this.props.events, (event, index) => (
+      <TableRow key={index}>
         <TableRowColumn>{event.id}</TableRowColumn>
-        <TableRowColumn>{event.title}</TableRowColumn>
+        <TableRowColumn>
+          <Link to={`/events/${event.id}`}>{event.title}</Link>
+        </TableRowColumn>
         <TableRowColumn>{event.body}</TableRowColumn>
       </TableRow>
     ))

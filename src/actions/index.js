@@ -1,7 +1,10 @@
 import axios from 'axios'
 
 export const READ_EVENTS = 'READ_EVENTS'
+export const READ_EVENT = 'READ_EVENT'
 export const CREATE_EVENT = 'CREATE_EVENT'
+export const UPDATE_EVENT = 'UPDATE_EVENT'
+export const DELETE_EVENT = 'DELETE_EVENT'
 
 // const ROOT_URL = 'https://xxx.xxx.com/api/v1'
 // const QUERYSTRING = '?token=token123'
@@ -20,4 +23,28 @@ export const postEvent = (values) => async (dispatch) => {
     `${process.env.PUBLIC_URL}/data/dummyEvents.json`
   )
   dispatch({ type: CREATE_EVENT, response })
+}
+
+export const putEvent = (values) => async (dispatch) => {
+  // const response = await axios.put(
+  //   `${ROOT_URL}/events/${values.id}${QUERYSTRING}`,
+  //   values
+  // )
+  const response = await axios.get(
+    `${process.env.PUBLIC_URL}/data/dummyEvents.json`
+  )
+  dispatch({ type: UPDATE_EVENT, response })
+}
+
+export const getEvent = (id) => async (dispatch) => {
+  // const response = await axios.get(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
+  const response = await axios.get(
+    `${process.env.PUBLIC_URL}/data/dummyEvents.json`
+  )
+  dispatch({ type: READ_EVENT, response })
+}
+
+export const deleteEvent = (id) => async (dispatch) => {
+  // await axios.delete(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
+  dispatch({ type: DELETE_EVENT, id })
 }
