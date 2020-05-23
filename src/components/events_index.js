@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 import {
   Table,
   TableBody,
@@ -9,6 +10,8 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import { readEvents } from '../actions'
 
 class EventsIndex extends Component {
@@ -27,8 +30,21 @@ class EventsIndex extends Component {
   }
 
   render() {
+    const style = {
+      position: 'fixed',
+      right: 12,
+      bottom: 12,
+    }
+
     return (
       <React.Fragment>
+        <FloatingActionButton
+          style={style}
+          containerElement={<Link to="/events/new" />}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+
         <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
