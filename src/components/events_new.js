@@ -46,7 +46,7 @@ class EventsNew extends Component {
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
           <Field
-            label="Title"
+            label="イベント名"
             name="title"
             type="text"
             component={this.renderField}
@@ -54,7 +54,7 @@ class EventsNew extends Component {
         </div>
         <div>
           <Field
-            label="Body"
+            label="イベント内容"
             name="body"
             type="text"
             component={this.renderField}
@@ -62,13 +62,13 @@ class EventsNew extends Component {
         </div>
 
         <RaisedButton
-          label="Submit"
+          label="登録"
           type="submit"
           style={style}
           disabled={pristine || submitting || invalid}
         />
         <RaisedButton
-          label="Cancel"
+          label="戻る"
           style={style}
           containerElement={<Link to="/" />}
         />
@@ -80,8 +80,8 @@ class EventsNew extends Component {
 const validate = (values) => {
   const errors = {}
 
-  if (!values.title) errors.title = 'Enter a title, please.'
-  if (!values.body) errors.body = 'Enter a body, please.'
+  if (!values.title) errors.title = 'イベント名を入力してください。'
+  if (!values.body) errors.body = 'イベント内容を入力してください。'
 
   return errors
 }

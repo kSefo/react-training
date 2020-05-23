@@ -51,9 +51,9 @@ class EventsIndex extends Component {
         <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn>ID</TableHeaderColumn>
-              <TableHeaderColumn>Title</TableHeaderColumn>
-              <TableHeaderColumn>Body</TableHeaderColumn>
+              <TableHeaderColumn>イベントID</TableHeaderColumn>
+              <TableHeaderColumn>イベント名</TableHeaderColumn>
+              <TableHeaderColumn>イベント内容</TableHeaderColumn>
             </TableRow>
           </TableHeader>
 
