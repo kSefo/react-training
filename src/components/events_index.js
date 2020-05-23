@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table'
 import { readEvents } from '../actions'
 
 class EventsIndex extends Component {
@@ -11,27 +18,31 @@ class EventsIndex extends Component {
 
   renderEvents() {
     return _.map(this.props.events, (event) => (
-      <tr key={event.id}>
-        <td>{event.id}</td>
-        <td>{event.title}</td>
-        <td>{event.body}</td>
-      </tr>
+      <TableRow key={event.id}>
+        <TableRowColumn>{event.id}</TableRowColumn>
+        <TableRowColumn>{event.title}</TableRowColumn>
+        <TableRowColumn>{event.body}</TableRowColumn>
+      </TableRow>
     ))
   }
 
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Body</th>
-          </tr>
-        </thead>
+      <React.Fragment>
+        <Table>
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableRow>
+              <TableHeaderColumn>ID</TableHeaderColumn>
+              <TableHeaderColumn>Title</TableHeaderColumn>
+              <TableHeaderColumn>Body</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
 
-        <tbody>{this.renderEvents()}</tbody>
-      </table>
+          <TableBody displayRowCheckbox={false}>
+            {this.renderEvents()}
+          </TableBody>
+        </Table>
+      </React.Fragment>
     )
   }
 }
